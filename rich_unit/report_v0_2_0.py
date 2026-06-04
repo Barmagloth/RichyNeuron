@@ -2,19 +2,24 @@
 
 STATUS: STRUCTURE STUB. Implementation deferred to the builder phase.
 
-Pre-registered constants (SPEC §5.0) — proposals from the SPEC, to be FROZEN in
-rich_unit/PREREG.md and committed BEFORE the first sweep. Do not change after a
-sweep has been looked at (SPEC §5.4, §0): a forced change is logged as a deviation
-with a reason.
+Pre-registered thresholds (SPEC §5.0) are NOT hardcoded here. They live, and are
+consciously frozen, in rich_unit/PREREG.md, and must be loaded from there once
+filled — copying the SPEC's *proposed* numbers (0.95 / 0.20 / median) into code
+before they are deliberately approved would defeat pre-registration. They are left
+as None until the builder wires up the loader. Do not change after a sweep has
+been looked at (SPEC §5.4, §0): a forced change is logged in PREREG.md as a
+deviation with a reason.
 """
 
 from __future__ import annotations
 
-# --- Pre-registered thresholds (mirror rich_unit/PREREG.md; SPEC §5.0) ---------
-ACC_TARGET = 0.95          # SPEC §5.0 proposal; calibrated on B1 (§5.1), then frozen.
-DELTA_MIN = 0.20           # min relative param reduction counted as significant.
-N_SEEDS = 5                # >=3 required, 5 proposed.
-AGGREGATION = "median"     # a point hits ACC_TARGET only if MEDIAN over seed >=.
+# --- Pre-registered thresholds: load from the FROZEN rich_unit/PREREG.md --------
+# Left as None on purpose. The builder reads the frozen values from PREREG.md
+# (single source of truth); they are NOT pre-filled from the SPEC's proposals.
+ACC_TARGET = None          # token-acc target; calibrated on B1 (§5.1), then frozen.
+DELTA_MIN = None           # min relative param reduction counted as significant.
+N_SEEDS = None             # seeds per point (SPEC §5.0: >=3).
+AGGREGATION = None         # rule by which a point is judged to hit ACC_TARGET.
 
 
 def decide_verdict() -> str:
