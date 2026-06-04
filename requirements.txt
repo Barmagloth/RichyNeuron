@@ -1,0 +1,10 @@
+# Runtime dependencies — kept minimal per SPEC §1 (CPU-only, no CUDA-specific libs).
+# Forbidden by SPEC §1: triton, causal-conv1d, mamba-ssm.
+torch>=2.0
+numpy>=1.24
+
+# Optional — plotting only, never in the hot path (SPEC §1).
+matplotlib>=3.7
+
+# Dev / test.
+pytest>=7.4

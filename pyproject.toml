@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rich_unit"
+version = "0.2.0"
+description = "Rich-unit prototype: does returning complexity into the unit beat a split temporal+channel stack at equal quality? (falsification of H0)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.7"]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+include = ["rich_unit*"]
+
+# Tests live inside the package (SPEC §7: rich_unit/tests/).
+[tool.pytest.ini_options]
+testpaths = ["rich_unit/tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
