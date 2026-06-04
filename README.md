@@ -63,6 +63,20 @@ python -m rich_unit.sweep_v0_2_0    # §5: calibrate ACC_TARGET on B1, then min-
 python -m rich_unit.report_v0_2_0   # §5.3/§5.4 table + verdict, A1/A2/A3 ablations
 ```
 
+## Reconnaissance pilot (done)
+A pilot (Selective Copy only, 3 seeds, NO H0 verdict) lives in
+`rich_unit/pilot_v0_2_0.py`; results and the writeup are in
+`results/PILOT_REPORT_v0_2_0.md`. Run: `python -m rich_unit.pilot_v0_2_0`.
+
+## Long-run resilience (`rich_unit/runner_v0_2_0.py`)
+The container is ephemeral, so long sweeps checkpoint to git:
+- **Resume** — results are appended to a CSV; a restart skips cells already
+  present (keyed by model × d_model × d_state × seed), so a reclaim costs only
+  the unfinished tail.
+- **Additive push** — every `CHECKPOINT_EVERY` cells the CSV is committed and
+  pushed, force-added past `.gitignore` (commits are verified server-side on
+  push). Disable with `RICH_UNIT_CHECKPOINT_PUSH=0` (used in tests / dry runs).
+
 ## How to read the verdict (SPEC §5.4)
 - **H0 refuted on a task:** `params(RichUnit) ≤ (1 − DELTA_MIN) × params(B1)` with both at `ACC_TARGET` (median rule).
 - **H1 fully supported:** refuted on **both** tasks. **Partial:** one task — weak signal, needs replication.

@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import statistics
 import time
 from pathlib import Path
@@ -30,6 +31,7 @@ from .models.baselines_v0_2_0 import StackedTemporalChannel, GRUCore
 from .models.wrapper_v0_2_0 import SequenceModel
 from .tasks.selective_copy_v0_2_0 import make_batch, val_seeds, VOCAB_SIZE
 from .train_v0_2_0 import train_one, TrainConfig
+from .runner_v0_2_0 import CheckpointedCSV, git_checkpoint
 
 SEEDS = [0, 1, 2]
 D_MODELS = [16, 32, 48, 64, 96, 128]
@@ -39,7 +41,15 @@ MAX_STEPS = 1200
 BATCH = 64
 EVAL_EVERY = 200
 
+# Resilience: commit+push the results CSV every N completed cells, so a container
+# reclaim during a long sweep costs only the unfinished tail (see runner_v0_2_0).
+# Disabled when RICH_UNIT_CHECKPOINT_PUSH=0 (tests / local dry runs).
+CHECKPOINT_EVERY = 12
+PUSH_CHECKPOINTS = os.environ.get("RICH_UNIT_CHECKPOINT_PUSH", "1") == "1"
+
 RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
+CSV_PATH = RESULTS_DIR / "pilot_selective_copy.csv"
+LR_PATH = RESULTS_DIR / "pilot_lr.json"
 VAL = val_seeds()
 
 
@@ -68,7 +78,15 @@ def run_cell(model_name, d_model, d_state, lr, seed, ablate=False):
 
 
 def calibrate_lr() -> dict[str, float]:
-    """Pick each model's lr from LR_GRID at a reference config (transparent)."""
+    """Pick each model's lr from LR_GRID at a reference config (transparent).
+
+    Resumable: the chosen lr is persisted to LR_PATH and reused on restart so a
+    resumed sweep keeps the SAME lr it started with (no silent re-pick).
+    """
+    if LR_PATH.exists():
+        chosen = json.loads(LR_PATH.read_text())
+        print(f"== lr calibration: reusing persisted {chosen} ==", flush=True)
+        return chosen
     print("== lr calibration (reference d_model=64, d_state=8, seed=0) ==", flush=True)
     chosen = {}
     ref = {"rich": (64, 8), "B1": (64, 8), "B2": (64, 8)}
@@ -81,6 +99,10 @@ def calibrate_lr() -> dict[str, float]:
                 best_acc, best_lr = res.best_val_acc, lr
         chosen[name] = best_lr
         print(f"  -> {name} chosen lr={best_lr} (best_val={best_acc:.3f})", flush=True)
+    RESULTS_DIR.mkdir(exist_ok=True)
+    LR_PATH.write_text(json.dumps(chosen, indent=2))
+    if PUSH_CHECKPOINTS:
+        git_checkpoint([LR_PATH], "chore(pilot): persist calibrated lr", push=True)
     return chosen
 
 
@@ -88,32 +110,64 @@ def median(xs):
     return statistics.median(xs)
 
 
-def run_grid(lr_by_model: dict[str, float]):
-    RESULTS_DIR.mkdir(exist_ok=True)
-    csv_path = RESULTS_DIR / "pilot_selective_copy.csv"
+def _load_rows() -> list[dict]:
+    """Read the checkpoint CSV back into typed rows (for aggregation/resume)."""
     rows = []
-    with open(csv_path, "w", newline="") as fh:
-        w = csv.writer(fh)
-        w.writerow(["model", "d_model", "d_state", "lr", "seed",
-                    "params", "best_val_acc", "steps_to_best"])
-        grid = [("rich", dm, ds) for dm in D_MODELS for ds in D_STATES]
-        grid += [("B1", dm, ds) for dm in D_MODELS for ds in D_STATES]
-        grid += [("B2", dm, 0) for dm in D_MODELS]
-        for (name, dm, ds) in grid:
-            lr = lr_by_model[name]
-            for seed in SEEDS:
-                t0 = time.time()
-                model, res = run_cell(name, dm, ds, lr, seed)
-                p = n_params(model)
-                w.writerow([name, dm, ds, lr, seed, p,
-                            round(res.best_val_acc, 4), res.steps_to_best])
-                fh.flush()
-                rows.append(dict(model=name, d_model=dm, d_state=ds, lr=lr,
-                                 seed=seed, params=p, best_val_acc=res.best_val_acc))
-                print(f"  {name} dm={dm} ds={ds} seed={seed}: "
-                      f"best_val={res.best_val_acc:.3f} params={p} "
-                      f"({time.time()-t0:.0f}s)", flush=True)
+    if not CSV_PATH.exists():
+        return rows
+    with open(CSV_PATH, newline="") as fh:
+        for r in csv.DictReader(fh):
+            rows.append(dict(model=r["model"], d_model=int(r["d_model"]),
+                             d_state=int(r["d_state"]), lr=float(r["lr"]),
+                             seed=int(r["seed"]), params=int(r["params"]),
+                             best_val_acc=float(r["best_val_acc"])))
     return rows
+
+
+def run_grid(lr_by_model: dict[str, float]):
+    """Run the full grid with resume + periodic git checkpoints.
+
+    Re-running skips cells already present in the CSV; every CHECKPOINT_EVERY new
+    cells the CSV is committed+pushed (force-added past .gitignore), so a reclaim
+    only costs the unfinished tail.
+    """
+    fields = ["model", "d_model", "d_state", "lr", "seed",
+              "params", "best_val_acc", "steps_to_best"]
+    log = CheckpointedCSV(CSV_PATH, fields, key_fields=["model", "d_model", "d_state", "seed"])
+
+    grid = [("rich", dm, ds) for dm in D_MODELS for ds in D_STATES]
+    grid += [("B1", dm, ds) for dm in D_MODELS for ds in D_STATES]
+    grid += [("B2", dm, 0) for dm in D_MODELS]
+
+    if log.n_done():
+        print(f"== grid: resuming, {log.n_done()} cells already done ==", flush=True)
+
+    since_ckpt = 0
+    for (name, dm, ds) in grid:
+        lr = lr_by_model[name]
+        for seed in SEEDS:
+            key = dict(model=name, d_model=dm, d_state=ds, seed=seed)
+            if log.is_done(key):
+                continue
+            t0 = time.time()
+            model, res = run_cell(name, dm, ds, lr, seed)
+            p = n_params(model)
+            log.append(dict(model=name, d_model=dm, d_state=ds, lr=lr, seed=seed,
+                            params=p, best_val_acc=round(res.best_val_acc, 4),
+                            steps_to_best=res.steps_to_best))
+            print(f"  {name} dm={dm} ds={ds} seed={seed}: "
+                  f"best_val={res.best_val_acc:.3f} params={p} "
+                  f"({time.time()-t0:.0f}s)", flush=True)
+            since_ckpt += 1
+            if PUSH_CHECKPOINTS and since_ckpt >= CHECKPOINT_EVERY:
+                git_checkpoint([CSV_PATH], f"chore(pilot): grid checkpoint "
+                               f"({log.n_done()} cells)", push=True)
+                since_ckpt = 0
+
+    if PUSH_CHECKPOINTS and since_ckpt:
+        git_checkpoint([CSV_PATH], f"chore(pilot): grid checkpoint "
+                       f"({log.n_done()} cells)", push=True)
+    return _load_rows()
 
 
 def aggregate(rows):
@@ -203,10 +257,13 @@ def main():
         "agg": agg,
         "wall_time_s": round(time.time() - t_start, 1),
     }
-    (RESULTS_DIR / "pilot_summary.json").write_text(json.dumps(summary, indent=2))
+    summary_path = RESULTS_DIR / "pilot_summary.json"
+    summary_path.write_text(json.dumps(summary, indent=2))
     print("\n== SUMMARY ==", flush=True)
     print(json.dumps({k: v for k, v in summary.items() if k != "agg"}, indent=2), flush=True)
     print(f"\nwall time: {summary['wall_time_s']}s", flush=True)
+    if PUSH_CHECKPOINTS:
+        git_checkpoint([CSV_PATH, summary_path], "chore(pilot): final results", push=True)
 
 
 if __name__ == "__main__":
