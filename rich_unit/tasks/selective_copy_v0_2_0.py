@@ -39,10 +39,14 @@ _MEM_LEN = SEQ_LEN - K_SIGNIFICANT - 1
 _MARKER_POS = _MEM_LEN             # index of the marker
 _ANSWER_START = _MEM_LEN + 1       # first answer slot
 
-# Val seeds live in a high, reserved namespace; training seeds stay well below it
-# (see ``train_v0_2_0``), guaranteeing the split is by seed (SPEC §3.1).
+# Val and test seeds live in high, reserved, mutually-disjoint namespaces;
+# training seeds stay well below them (see ``train_v0_2_0``), guaranteeing the
+# split is by seed (SPEC §3.1). Val drives early-stop/lr-selection; test is the
+# held-out reporting split.
 _VAL_SEED_BASE = 2_000_000
 _N_VAL_BATCHES = 8
+_TEST_SEED_BASE = 3_000_000
+_N_TEST_BATCHES = 8
 
 
 def make_batch(batch_size: int, seed: int) -> tuple[torch.Tensor, torch.Tensor]:
@@ -75,3 +79,8 @@ def make_batch(batch_size: int, seed: int) -> tuple[torch.Tensor, torch.Tensor]:
 def val_seeds() -> list[int]:
     """Fixed validation seeds, disjoint from training seeds (SPEC §3.1)."""
     return [_VAL_SEED_BASE + i for i in range(_N_VAL_BATCHES)]
+
+
+def test_seeds() -> list[int]:
+    """Fixed held-out test seeds, disjoint from train and val (for honest reporting)."""
+    return [_TEST_SEED_BASE + i for i in range(_N_TEST_BATCHES)]

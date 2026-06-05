@@ -1,0 +1,401 @@
+  rich dm=16 ds=8 lr=0.001 seed=0: val=0.389 test=0.392 stop@4600 best@4400 (162s)
+  rich dm=16 ds=8 lr=0.001 seed=1: val=0.399 test=0.404 stop@5800 best@5800 (197s)
+  rich dm=16 ds=8 lr=0.001 seed=2: val=0.399 test=0.407 stop@5600 best@5600 (187s)
+  rich dm=16 ds=8 lr=0.001 seed=3: val=0.383 test=0.386 stop@4000 best@4000 (131s)
+  rich dm=16 ds=8 lr=0.001 seed=4: val=0.280 test=0.293 stop@2400 best@2400 (81s)
+  rich dm=16 ds=8 lr=0.003 seed=0: val=0.404 test=0.409 stop@2800 best@2200 (94s)
+  rich dm=16 ds=8 lr=0.003 seed=1: val=0.402 test=0.410 stop@3200 best@3000 (111s)
+  rich dm=16 ds=8 lr=0.003 seed=2: val=0.483 test=0.498 stop@5200 best@4600 (176s)
+  rich dm=16 ds=8 lr=0.003 seed=3: val=0.396 test=0.388 stop@2600 best@2600 (87s)
+  rich dm=16 ds=8 lr=0.003 seed=4: val=0.384 test=0.389 stop@3600 best@3400 (122s)
+[checkpoint] pushed: chore(pilot2): checkpoint (10 runs)
+  rich dm=16 ds=8 lr=0.01 seed=0: val=0.575 test=0.559 stop@4600 best@3600 (165s)
+  rich dm=16 ds=8 lr=0.01 seed=1: val=0.545 test=0.560 stop@3800 best@3600 (132s)
+  rich dm=16 ds=8 lr=0.01 seed=2: val=0.523 test=0.525 stop@4600 best@4600 (159s)
+  rich dm=16 ds=8 lr=0.01 seed=3: val=0.597 test=0.606 stop@5000 best@5000 (170s)
+  rich dm=16 ds=8 lr=0.01 seed=4: val=0.456 test=0.457 stop@3200 best@2200 (107s)
+  rich dm=16 ds=16 lr=0.001 seed=0: val=0.396 test=0.397 stop@5200 best@4800 (173s)
+  rich dm=16 ds=16 lr=0.001 seed=1: val=0.389 test=0.396 stop@5000 best@4800 (167s)
+  rich dm=16 ds=16 lr=0.001 seed=2: val=0.531 test=0.519 stop@8000 best@8000 (289s)
+  rich dm=16 ds=16 lr=0.001 seed=3: val=0.413 test=0.418 stop@5800 best@5800 (205s)
+  rich dm=16 ds=16 lr=0.001 seed=4: val=0.403 test=0.411 stop@6200 best@5200 (216s)
+[checkpoint] pushed: chore(pilot2): checkpoint (20 runs)
+  rich dm=16 ds=16 lr=0.003 seed=0: val=0.587 test=0.585 stop@5000 best@5000 (171s)
+  rich dm=16 ds=16 lr=0.003 seed=1: val=0.570 test=0.575 stop@8000 best@8000 (267s)
+  rich dm=16 ds=16 lr=0.003 seed=2: val=0.634 test=0.633 stop@7600 best@7600 (262s)
+  rich dm=16 ds=16 lr=0.003 seed=3: val=0.562 test=0.558 stop@5600 best@5600 (197s)
+  rich dm=16 ds=16 lr=0.003 seed=4: val=0.411 test=0.417 stop@4200 best@3200 (141s)
+  rich dm=16 ds=16 lr=0.01 seed=0: val=0.598 test=0.606 stop@3400 best@3400 (115s)
+  rich dm=16 ds=16 lr=0.01 seed=1: val=0.488 test=0.470 stop@4600 best@3600 (174s)
+  rich dm=16 ds=16 lr=0.01 seed=2: val=0.641 test=0.645 stop@4400 best@4200 (156s)
+  rich dm=16 ds=16 lr=0.01 seed=3: val=0.660 test=0.642 stop@6800 best@5800 (245s)
+  rich dm=16 ds=16 lr=0.01 seed=4: val=0.657 test=0.653 stop@8000 best@7600 (288s)
+[checkpoint] pushed: chore(pilot2): checkpoint (30 runs)
+  rich dm=32 ds=8 lr=0.001 seed=0: val=0.386 test=0.389 stop@4000 best@4000 (150s)
+  rich dm=32 ds=8 lr=0.001 seed=1: val=0.392 test=0.395 stop@3200 best@3000 (120s)
+  rich dm=32 ds=8 lr=0.001 seed=2: val=0.408 test=0.401 stop@4000 best@3400 (146s)
+  rich dm=32 ds=8 lr=0.001 seed=3: val=0.386 test=0.397 stop@3400 best@3200 (125s)
+  rich dm=32 ds=8 lr=0.001 seed=4: val=0.397 test=0.409 stop@4200 best@4200 (156s)
+  rich dm=32 ds=8 lr=0.003 seed=0: val=0.406 test=0.410 stop@2400 best@2400 (91s)
+  rich dm=32 ds=8 lr=0.003 seed=1: val=0.542 test=0.550 stop@4600 best@4600 (168s)
+  rich dm=32 ds=8 lr=0.003 seed=2: val=0.556 test=0.560 stop@4000 best@4000 (161s)
+  rich dm=32 ds=8 lr=0.003 seed=3: val=0.405 test=0.409 stop@2400 best@2400 (97s)
+  rich dm=32 ds=8 lr=0.003 seed=4: val=0.594 test=0.614 stop@6600 best@6600 (241s)
+[checkpoint] pushed: chore(pilot2): checkpoint (40 runs)
+  rich dm=32 ds=8 lr=0.01 seed=0: val=0.642 test=0.639 stop@6800 best@6400 (247s)
+  rich dm=32 ds=8 lr=0.01 seed=1: val=0.598 test=0.615 stop@3800 best@3800 (137s)
+  rich dm=32 ds=8 lr=0.01 seed=2: val=0.632 test=0.624 stop@6800 best@6800 (241s)
+  rich dm=32 ds=8 lr=0.01 seed=3: val=0.702 test=0.704 stop@5200 best@5200 (183s)
+  rich dm=32 ds=8 lr=0.01 seed=4: val=0.685 test=0.681 stop@6800 best@6600 (245s)
+  rich dm=32 ds=16 lr=0.001 seed=0: val=0.399 test=0.407 stop@3600 best@3200 (131s)
+  rich dm=32 ds=16 lr=0.001 seed=1: val=0.408 test=0.416 stop@3200 best@3200 (119s)
+  rich dm=32 ds=16 lr=0.001 seed=2: val=0.408 test=0.408 stop@4400 best@4400 (159s)
+  rich dm=32 ds=16 lr=0.001 seed=3: val=0.412 test=0.417 stop@3200 best@3000 (115s)
+  rich dm=32 ds=16 lr=0.001 seed=4: val=0.402 test=0.401 stop@3400 best@3200 (126s)
+[checkpoint] pushed: chore(pilot2): checkpoint (50 runs)
+  rich dm=32 ds=16 lr=0.003 seed=0: val=0.709 test=0.699 stop@8000 best@7600 (299s)
+  rich dm=32 ds=16 lr=0.003 seed=1: val=0.711 test=0.702 stop@6400 best@6200 (236s)
+  rich dm=32 ds=16 lr=0.003 seed=2: val=0.704 test=0.689 stop@8000 best@7800 (292s)
+  rich dm=32 ds=16 lr=0.003 seed=3: val=0.706 test=0.694 stop@7800 best@7800 (307s)
+  rich dm=32 ds=16 lr=0.003 seed=4: val=0.704 test=0.702 stop@7800 best@6800 (295s)
+  rich dm=32 ds=16 lr=0.01 seed=0: val=0.732 test=0.737 stop@5000 best@4800 (194s)
+  rich dm=32 ds=16 lr=0.01 seed=1: val=0.766 test=0.744 stop@7400 best@6400 (272s)
+  rich dm=32 ds=16 lr=0.01 seed=2: val=0.726 test=0.742 stop@5200 best@4800 (193s)
+  rich dm=32 ds=16 lr=0.01 seed=3: val=0.741 test=0.750 stop@5000 best@4800 (186s)
+  rich dm=32 ds=16 lr=0.01 seed=4: val=0.746 test=0.749 stop@5400 best@4400 (199s)
+[checkpoint] pushed: chore(pilot2): checkpoint (60 runs)
+  rich dm=48 ds=8 lr=0.001 seed=0: val=0.529 test=0.538 stop@7200 best@7200 (284s)
+  rich dm=48 ds=8 lr=0.001 seed=1: val=0.399 test=0.411 stop@4400 best@4000 (178s)
+  rich dm=48 ds=8 lr=0.001 seed=2: val=0.504 test=0.514 stop@6200 best@6000 (251s)
+  rich dm=48 ds=8 lr=0.001 seed=3: val=0.396 test=0.403 stop@3200 best@3000 (132s)
+  rich dm=48 ds=8 lr=0.001 seed=4: val=0.402 test=0.408 stop@3400 best@3200 (141s)
+  rich dm=48 ds=8 lr=0.003 seed=0: val=0.590 test=0.580 stop@6600 best@5600 (269s)
+  rich dm=48 ds=8 lr=0.003 seed=1: val=0.527 test=0.526 stop@3400 best@2800 (142s)
+  rich dm=48 ds=8 lr=0.003 seed=2: val=0.597 test=0.593 stop@5000 best@5000 (209s)
+  rich dm=48 ds=8 lr=0.003 seed=3: val=0.612 test=0.626 stop@8000 best@7600 (343s)
+  rich dm=48 ds=8 lr=0.003 seed=4: val=0.596 test=0.587 stop@6600 best@6200 (270s)
+[checkpoint] pushed: chore(pilot2): checkpoint (70 runs)
+  rich dm=48 ds=8 lr=0.01 seed=0: val=0.631 test=0.617 stop@6800 best@5800 (284s)
+== resuming: 71 runs already done ==
+  rich dm=48 ds=8 lr=0.01 seed=1: val=0.699 test=0.707 stop@5400 best@4400 (172s)
+  rich dm=48 ds=8 lr=0.01 seed=2: val=0.655 test=0.660 stop@4400 best@4200 (124s)
+  rich dm=48 ds=8 lr=0.01 seed=3: val=0.642 test=0.634 stop@5000 best@4200 (143s)
+  rich dm=48 ds=8 lr=0.01 seed=4: val=0.615 test=0.607 stop@3400 best@3400 (106s)
+  rich dm=48 ds=16 lr=0.001 seed=0: val=0.619 test=0.604 stop@8000 best@8000 (234s)
+  rich dm=48 ds=16 lr=0.001 seed=1: val=0.629 test=0.638 stop@8000 best@8000 (225s)
+  rich dm=48 ds=16 lr=0.001 seed=2: val=0.614 test=0.604 stop@8000 best@8000 (251s)
+  rich dm=48 ds=16 lr=0.001 seed=3: val=0.663 test=0.656 stop@8000 best@8000 (227s)
+  rich dm=48 ds=16 lr=0.001 seed=4: val=0.626 test=0.640 stop@8000 best@7600 (235s)
+  rich dm=48 ds=16 lr=0.003 seed=0: val=0.718 test=0.717 stop@6400 best@6200 (201s)
+[checkpoint] pushed: chore(pilot2): checkpoint (81 runs)
+  rich dm=48 ds=16 lr=0.003 seed=1: val=0.761 test=0.750 stop@7600 best@6600 (243s)
+  rich dm=48 ds=16 lr=0.003 seed=2: val=0.728 test=0.715 stop@6800 best@6400 (272s)
+  rich dm=48 ds=16 lr=0.003 seed=3: val=0.738 test=0.724 stop@7000 best@6600 (262s)
+  rich dm=48 ds=16 lr=0.003 seed=4: val=0.769 test=0.769 stop@8000 best@7600 (255s)
+  rich dm=48 ds=16 lr=0.01 seed=0: val=0.758 test=0.785 stop@3400 best@3400 (98s)
+  rich dm=48 ds=16 lr=0.01 seed=1: val=0.757 test=0.744 stop@4200 best@3200 (123s)
+  rich dm=48 ds=16 lr=0.01 seed=2: val=0.768 test=0.791 stop@4200 best@4000 (141s)
+  rich dm=48 ds=16 lr=0.01 seed=3: val=0.755 test=0.767 stop@5000 best@4600 (185s)
+  rich dm=48 ds=16 lr=0.01 seed=4: val=0.780 test=0.787 stop@5200 best@4400 (184s)
+  rich dm=64 ds=8 lr=0.001 seed=0: val=0.405 test=0.407 stop@3800 best@3400 (141s)
+[checkpoint] pushed: chore(pilot2): checkpoint (91 runs)
+  rich dm=64 ds=8 lr=0.001 seed=1: val=0.540 test=0.538 stop@6400 best@5400 (241s)
+  rich dm=64 ds=8 lr=0.001 seed=2: val=0.488 test=0.500 stop@5200 best@5200 (187s)
+  rich dm=64 ds=8 lr=0.001 seed=3: val=0.519 test=0.512 stop@6600 best@6200 (262s)
+  rich dm=64 ds=8 lr=0.001 seed=4: val=0.406 test=0.404 stop@3800 best@3600 (161s)
+  rich dm=64 ds=8 lr=0.003 seed=0: val=0.657 test=0.648 stop@8000 best@7600 (339s)
+  rich dm=64 ds=8 lr=0.003 seed=1: val=0.505 test=0.529 stop@2400 best@2400 (122s)
+  rich dm=64 ds=8 lr=0.003 seed=2: val=0.537 test=0.542 stop@4200 best@4000 (182s)
+  rich dm=64 ds=8 lr=0.003 seed=3: val=0.532 test=0.558 stop@5200 best@5200 (202s)
+  rich dm=64 ds=8 lr=0.003 seed=4: val=0.594 test=0.596 stop@5200 best@5200 (202s)
+  rich dm=64 ds=8 lr=0.01 seed=0: val=0.729 test=0.722 stop@6400 best@5400 (294s)
+[checkpoint] pushed: chore(pilot2): checkpoint (101 runs)
+  rich dm=64 ds=8 lr=0.01 seed=1: val=0.681 test=0.667 stop@6200 best@5200 (265s)
+  rich dm=64 ds=8 lr=0.01 seed=2: val=0.641 test=0.632 stop@3800 best@3200 (139s)
+  rich dm=64 ds=8 lr=0.01 seed=3: val=0.644 test=0.646 stop@6400 best@5400 (227s)
+  rich dm=64 ds=8 lr=0.01 seed=4: val=0.701 test=0.704 stop@4600 best@4400 (190s)
+  rich dm=64 ds=16 lr=0.001 seed=0: val=0.652 test=0.633 stop@8000 best@7600 (333s)
+  rich dm=64 ds=16 lr=0.001 seed=1: val=0.673 test=0.656 stop@8000 best@7800 (298s)
+  rich dm=64 ds=16 lr=0.001 seed=2: val=0.635 test=0.646 stop@6800 best@6800 (261s)
+  rich dm=64 ds=16 lr=0.001 seed=3: val=0.414 test=0.422 stop@2600 best@2600 (106s)
+  rich dm=64 ds=16 lr=0.001 seed=4: val=0.668 test=0.655 stop@8000 best@8000 (311s)
+  rich dm=64 ds=16 lr=0.003 seed=0: val=0.792 test=0.774 stop@8000 best@7400 (313s)
+[checkpoint] pushed: chore(pilot2): checkpoint (111 runs)
+  rich dm=64 ds=16 lr=0.003 seed=1: val=0.771 test=0.772 stop@7400 best@6400 (294s)
+  rich dm=64 ds=16 lr=0.003 seed=2: val=0.747 test=0.751 stop@6200 best@5200 (234s)
+  rich dm=64 ds=16 lr=0.003 seed=3: val=0.772 test=0.774 stop@7800 best@7800 (304s)
+  rich dm=64 ds=16 lr=0.003 seed=4: val=0.762 test=0.773 stop@7000 best@7000 (335s)
+  rich dm=64 ds=16 lr=0.01 seed=0: val=0.777 test=0.793 stop@4200 best@4200 (189s)
+  rich dm=64 ds=16 lr=0.01 seed=1: val=0.773 test=0.782 stop@4600 best@4400 (197s)
+  rich dm=64 ds=16 lr=0.01 seed=2: val=0.819 test=0.823 stop@6800 best@6800 (268s)
+  rich dm=64 ds=16 lr=0.01 seed=3: val=0.784 test=0.791 stop@4800 best@4600 (183s)
+  rich dm=64 ds=16 lr=0.01 seed=4: val=0.796 test=0.806 stop@5800 best@5800 (232s)
+  B1 dm=16 ds=8 lr=0.001 seed=0: val=0.442 test=0.417 stop@8000 best@7600 (119s)
+[checkpoint] pushed: chore(pilot2): checkpoint (121 runs)
+  B1 dm=16 ds=8 lr=0.001 seed=1: val=0.455 test=0.470 stop@8000 best@8000 (130s)
+  B1 dm=16 ds=8 lr=0.001 seed=2: val=0.391 test=0.407 stop@5000 best@5000 (79s)
+  B1 dm=16 ds=8 lr=0.001 seed=3: val=0.363 test=0.353 stop@4000 best@3200 (59s)
+  B1 dm=16 ds=8 lr=0.001 seed=4: val=0.405 test=0.402 stop@6600 best@6400 (96s)
+  B1 dm=16 ds=8 lr=0.003 seed=0: val=0.588 test=0.593 stop@8000 best@8000 (120s)
+  B1 dm=16 ds=8 lr=0.003 seed=1: val=0.451 test=0.445 stop@4400 best@4200 (76s)
+  B1 dm=16 ds=8 lr=0.003 seed=2: val=0.521 test=0.525 stop@8000 best@7800 (121s)
+  B1 dm=16 ds=8 lr=0.003 seed=3: val=0.494 test=0.491 stop@7400 best@7400 (110s)
+  B1 dm=16 ds=8 lr=0.003 seed=4: val=0.573 test=0.570 stop@7200 best@7200 (104s)
+  B1 dm=16 ds=8 lr=0.01 seed=0: val=0.574 test=0.575 stop@4400 best@4400 (65s)
+[checkpoint] pushed: chore(pilot2): checkpoint (131 runs)
+  B1 dm=16 ds=8 lr=0.01 seed=1: val=0.454 test=0.431 stop@2200 best@1600 (34s)
+  B1 dm=16 ds=8 lr=0.01 seed=2: val=0.445 test=0.444 stop@2800 best@1800 (38s)
+  B1 dm=16 ds=8 lr=0.01 seed=3: val=0.528 test=0.532 stop@5800 best@4800 (79s)
+  B1 dm=16 ds=8 lr=0.01 seed=4: val=0.581 test=0.585 stop@6200 best@5200 (107s)
+  B1 dm=16 ds=16 lr=0.001 seed=0: val=0.562 test=0.532 stop@6400 best@5800 (144s)
+  B1 dm=16 ds=16 lr=0.001 seed=1: val=0.358 test=0.359 stop@2600 best@2600 (61s)
+  B1 dm=16 ds=16 lr=0.001 seed=2: val=0.493 test=0.494 stop@8000 best@7800 (221s)
+  B1 dm=16 ds=16 lr=0.001 seed=3: val=0.533 test=0.525 stop@7600 best@7600 (185s)
+  B1 dm=16 ds=16 lr=0.001 seed=4: val=0.610 test=0.609 stop@8000 best@7800 (186s)
+  B1 dm=16 ds=16 lr=0.003 seed=0: val=0.699 test=0.720 stop@8000 best@7800 (223s)
+[checkpoint] pushed: chore(pilot2): checkpoint (141 runs)
+  B1 dm=16 ds=16 lr=0.003 seed=1: val=0.654 test=0.647 stop@7600 best@7400 (175s)
+  B1 dm=16 ds=16 lr=0.003 seed=2: val=0.667 test=0.661 stop@7400 best@6400 (138s)
+  B1 dm=16 ds=16 lr=0.003 seed=3: val=0.654 test=0.659 stop@6200 best@6000 (100s)
+  B1 dm=16 ds=16 lr=0.003 seed=4: val=0.669 test=0.679 stop@7400 best@6400 (132s)
+  B1 dm=16 ds=16 lr=0.01 seed=0: val=0.690 test=0.676 stop@6600 best@6600 (138s)
+  B1 dm=16 ds=16 lr=0.01 seed=1: val=0.710 test=0.688 stop@6000 best@5000 (134s)
+== resuming: 147 runs already done ==
+  B1 dm=16 ds=16 lr=0.01 seed=2: val=0.703 test=0.686 stop@5400 best@4400 (61s)
+  B1 dm=16 ds=16 lr=0.01 seed=3: val=0.681 test=0.667 stop@4000 best@3000 (35s)
+  B1 dm=16 ds=16 lr=0.01 seed=4: val=0.680 test=0.696 stop@5600 best@4600 (52s)
+  B1 dm=32 ds=8 lr=0.001 seed=0: val=0.465 test=0.458 stop@8000 best@7600 (68s)
+  B1 dm=32 ds=8 lr=0.001 seed=1: val=0.558 test=0.542 stop@8000 best@7600 (72s)
+  B1 dm=32 ds=8 lr=0.001 seed=2: val=0.507 test=0.492 stop@8000 best@7800 (67s)
+  B1 dm=32 ds=8 lr=0.001 seed=3: val=0.534 test=0.548 stop@8000 best@7800 (66s)
+  B1 dm=32 ds=8 lr=0.001 seed=4: val=0.499 test=0.463 stop@8000 best@7800 (68s)
+  B1 dm=32 ds=8 lr=0.003 seed=0: val=0.574 test=0.574 stop@6600 best@5600 (55s)
+  B1 dm=32 ds=8 lr=0.003 seed=1: val=0.656 test=0.652 stop@6800 best@5800 (56s)
+[checkpoint] pushed: chore(pilot2): checkpoint (157 runs)
+  B1 dm=32 ds=8 lr=0.003 seed=2: val=0.562 test=0.554 stop@5400 best@4600 (45s)
+  B1 dm=32 ds=8 lr=0.003 seed=3: val=0.562 test=0.561 stop@5800 best@4800 (48s)
+  B1 dm=32 ds=8 lr=0.003 seed=4: val=0.548 test=0.535 stop@3600 best@2600 (30s)
+  B1 dm=32 ds=8 lr=0.01 seed=0: val=0.244 test=0.234 stop@1200 best@200 (11s)
+  B1 dm=32 ds=8 lr=0.01 seed=1: val=0.619 test=0.589 stop@7600 best@6600 (64s)
+  B1 dm=32 ds=8 lr=0.01 seed=2: val=0.366 test=0.366 stop@2000 best@1000 (17s)
+  B1 dm=32 ds=8 lr=0.01 seed=3: val=0.369 test=0.381 stop@1800 best@800 (15s)
+  B1 dm=32 ds=8 lr=0.01 seed=4: val=0.641 test=0.620 stop@6200 best@5200 (51s)
+  B1 dm=32 ds=16 lr=0.001 seed=0: val=0.666 test=0.671 stop@8000 best@8000 (73s)
+  B1 dm=32 ds=16 lr=0.001 seed=1: val=0.699 test=0.699 stop@8000 best@7800 (73s)
+[checkpoint] pushed: chore(pilot2): checkpoint (167 runs)
+  B1 dm=32 ds=16 lr=0.001 seed=2: val=0.625 test=0.613 stop@7600 best@6600 (69s)
+  B1 dm=32 ds=16 lr=0.001 seed=3: val=0.663 test=0.686 stop@8000 best@7800 (74s)
+  B1 dm=32 ds=16 lr=0.001 seed=4: val=0.586 test=0.594 stop@7600 best@7400 (69s)
+  B1 dm=32 ds=16 lr=0.003 seed=0: val=0.725 test=0.736 stop@6200 best@5200 (57s)
+  B1 dm=32 ds=16 lr=0.003 seed=1: val=0.689 test=0.695 stop@4600 best@3600 (42s)
+  B1 dm=32 ds=16 lr=0.003 seed=2: val=0.675 test=0.682 stop@4400 best@4200 (41s)
+  B1 dm=32 ds=16 lr=0.003 seed=3: val=0.695 test=0.695 stop@5000 best@4000 (47s)
+  B1 dm=32 ds=16 lr=0.003 seed=4: val=0.665 test=0.672 stop@5600 best@5000 (53s)
+  B1 dm=32 ds=16 lr=0.01 seed=0: val=0.457 test=0.443 stop@2200 best@1200 (21s)
+  B1 dm=32 ds=16 lr=0.01 seed=1: val=0.693 test=0.705 stop@4800 best@3800 (46s)
+[checkpoint] pushed: chore(pilot2): checkpoint (177 runs)
+  B1 dm=32 ds=16 lr=0.01 seed=2: val=0.725 test=0.722 stop@5600 best@4600 (54s)
+  B1 dm=32 ds=16 lr=0.01 seed=3: val=0.650 test=0.654 stop@6200 best@5600 (57s)
+  B1 dm=32 ds=16 lr=0.01 seed=4: val=0.186 test=0.200 stop@1200 best@400 (11s)
+  B1 dm=48 ds=8 lr=0.001 seed=0: val=0.511 test=0.508 stop@5400 best@5400 (50s)
+  B1 dm=48 ds=8 lr=0.001 seed=1: val=0.614 test=0.597 stop@8000 best@7600 (73s)
+  B1 dm=48 ds=8 lr=0.001 seed=2: val=0.490 test=0.472 stop@5800 best@5800 (52s)
+  B1 dm=48 ds=8 lr=0.001 seed=3: val=0.557 test=0.527 stop@8000 best@7800 (72s)
+  B1 dm=48 ds=8 lr=0.001 seed=4: val=0.562 test=0.555 stop@8000 best@7000 (73s)
+  B1 dm=48 ds=8 lr=0.003 seed=0: val=0.596 test=0.556 stop@5800 best@4800 (52s)
+  B1 dm=48 ds=8 lr=0.003 seed=1: val=0.650 test=0.670 stop@7200 best@6800 (67s)
+[checkpoint] pushed: chore(pilot2): checkpoint (187 runs)
+  B1 dm=48 ds=8 lr=0.003 seed=2: val=0.539 test=0.529 stop@6600 best@6000 (60s)
+  B1 dm=48 ds=8 lr=0.003 seed=3: val=0.609 test=0.608 stop@5600 best@5000 (52s)
+  B1 dm=48 ds=8 lr=0.003 seed=4: val=0.572 test=0.562 stop@6400 best@5400 (59s)
+  B1 dm=48 ds=8 lr=0.01 seed=0: val=0.279 test=0.273 stop@1800 best@800 (16s)
+  B1 dm=48 ds=8 lr=0.01 seed=1: val=0.212 test=0.222 stop@1200 best@200 (11s)
+  B1 dm=48 ds=8 lr=0.01 seed=2: val=0.261 test=0.258 stop@1600 best@600 (15s)
+  B1 dm=48 ds=8 lr=0.01 seed=3: val=0.426 test=0.428 stop@3400 best@2400 (30s)
+  B1 dm=48 ds=8 lr=0.01 seed=4: val=0.272 test=0.269 stop@1600 best@600 (15s)
+  B1 dm=48 ds=16 lr=0.001 seed=0: val=0.748 test=0.759 stop@8000 best@8000 (80s)
+  B1 dm=48 ds=16 lr=0.001 seed=1: val=0.704 test=0.714 stop@6400 best@6200 (64s)
+[checkpoint] pushed: chore(pilot2): checkpoint (197 runs)
+  B1 dm=48 ds=16 lr=0.001 seed=2: val=0.720 test=0.730 stop@8000 best@8000 (78s)
+  B1 dm=48 ds=16 lr=0.001 seed=3: val=0.713 test=0.707 stop@6400 best@5400 (63s)
+  B1 dm=48 ds=16 lr=0.001 seed=4: val=0.686 test=0.687 stop@7200 best@6200 (71s)
+  B1 dm=48 ds=16 lr=0.003 seed=0: val=0.743 test=0.743 stop@5800 best@5400 (57s)
+  B1 dm=48 ds=16 lr=0.003 seed=1: val=0.724 test=0.717 stop@5600 best@4600 (57s)
+  B1 dm=48 ds=16 lr=0.003 seed=2: val=0.713 test=0.698 stop@5200 best@4200 (50s)
+  B1 dm=48 ds=16 lr=0.003 seed=3: val=0.743 test=0.749 stop@5600 best@4600 (55s)
+  B1 dm=48 ds=16 lr=0.003 seed=4: val=0.728 test=0.738 stop@6200 best@5200 (61s)
+  B1 dm=48 ds=16 lr=0.01 seed=0: val=0.532 test=0.528 stop@3200 best@2600 (31s)
+  B1 dm=48 ds=16 lr=0.01 seed=1: val=0.271 test=0.264 stop@1200 best@200 (11s)
+[checkpoint] pushed: chore(pilot2): checkpoint (207 runs)
+  B1 dm=48 ds=16 lr=0.01 seed=2: val=0.249 test=0.255 stop@1200 best@200 (12s)
+  B1 dm=48 ds=16 lr=0.01 seed=3: val=0.243 test=0.255 stop@1200 best@200 (11s)
+  B1 dm=48 ds=16 lr=0.01 seed=4: val=0.207 test=0.206 stop@1200 best@200 (12s)
+  B1 dm=64 ds=8 lr=0.001 seed=0: val=0.571 test=0.562 stop@8000 best@8000 (78s)
+  B1 dm=64 ds=8 lr=0.001 seed=1: val=0.502 test=0.475 stop@6400 best@5400 (63s)
+  B1 dm=64 ds=8 lr=0.001 seed=2: val=0.562 test=0.572 stop@8000 best@7800 (77s)
+  B1 dm=64 ds=8 lr=0.001 seed=3: val=0.610 test=0.605 stop@8000 best@8000 (78s)
+  B1 dm=64 ds=8 lr=0.001 seed=4: val=0.609 test=0.600 stop@8000 best@7400 (79s)
+  B1 dm=64 ds=8 lr=0.003 seed=0: val=0.632 test=0.626 stop@7800 best@6800 (75s)
+  B1 dm=64 ds=8 lr=0.003 seed=1: val=0.529 test=0.520 stop@5600 best@4600 (57s)
+[checkpoint] pushed: chore(pilot2): checkpoint (217 runs)
+  B1 dm=64 ds=8 lr=0.003 seed=2: val=0.631 test=0.622 stop@7800 best@7800 (75s)
+  B1 dm=64 ds=8 lr=0.003 seed=3: val=0.523 test=0.522 stop@3600 best@3600 (36s)
+  B1 dm=64 ds=8 lr=0.003 seed=4: val=0.569 test=0.547 stop@6000 best@5000 (59s)
+  B1 dm=64 ds=8 lr=0.01 seed=0: val=0.406 test=0.387 stop@4000 best@3800 (39s)
+  B1 dm=64 ds=8 lr=0.01 seed=1: val=0.174 test=0.174 stop@1200 best@200 (11s)
+  B1 dm=64 ds=8 lr=0.01 seed=2: val=0.571 test=0.544 stop@7000 best@6000 (67s)
+  B1 dm=64 ds=8 lr=0.01 seed=3: val=0.301 test=0.296 stop@1400 best@400 (14s)
+  B1 dm=64 ds=8 lr=0.01 seed=4: val=0.293 test=0.303 stop@1800 best@800 (18s)
+  B1 dm=64 ds=16 lr=0.001 seed=0: val=0.684 test=0.683 stop@7200 best@6200 (77s)
+  B1 dm=64 ds=16 lr=0.001 seed=1: val=0.692 test=0.694 stop@8000 best@7400 (87s)
+[checkpoint] pushed: chore(pilot2): checkpoint (227 runs)
+  B1 dm=64 ds=16 lr=0.001 seed=2: val=0.741 test=0.744 stop@8000 best@7600 (85s)
+  B1 dm=64 ds=16 lr=0.001 seed=3: val=0.713 test=0.731 stop@8000 best@7800 (84s)
+  B1 dm=64 ds=16 lr=0.001 seed=4: val=0.728 test=0.729 stop@8000 best@7800 (85s)
+  B1 dm=64 ds=16 lr=0.003 seed=0: val=0.722 test=0.738 stop@6800 best@6400 (75s)
+  B1 dm=64 ds=16 lr=0.003 seed=1: val=0.672 test=0.689 stop@4600 best@4600 (48s)
+  B1 dm=64 ds=16 lr=0.003 seed=2: val=0.672 test=0.685 stop@4000 best@3400 (43s)
+  B1 dm=64 ds=16 lr=0.003 seed=3: val=0.735 test=0.750 stop@5200 best@5200 (56s)
+  B1 dm=64 ds=16 lr=0.003 seed=4: val=0.755 test=0.740 stop@6000 best@5000 (66s)
+  B1 dm=64 ds=16 lr=0.01 seed=0: val=0.474 test=0.465 stop@6600 best@5600 (71s)
+  B1 dm=64 ds=16 lr=0.01 seed=1: val=0.218 test=0.229 stop@1200 best@400 (12s)
+[checkpoint] pushed: chore(pilot2): checkpoint (237 runs)
+  B1 dm=64 ds=16 lr=0.01 seed=2: val=0.230 test=0.239 stop@1200 best@200 (14s)
+  B1 dm=64 ds=16 lr=0.01 seed=3: val=0.622 test=0.622 stop@5200 best@4200 (55s)
+  B1 dm=64 ds=16 lr=0.01 seed=4: val=0.224 test=0.218 stop@1200 best@200 (13s)
+  B2 dm=32 ds=0 lr=0.003 seed=0: val=1.000 test=0.999 stop@2200 best@2200 (39s)
+  B2 dm=32 ds=0 lr=0.003 seed=1: val=0.995 test=0.995 stop@3200 best@3000 (56s)
+  B2 dm=32 ds=0 lr=0.003 seed=2: val=0.998 test=0.996 stop@3400 best@3400 (58s)
+  B2 dm=64 ds=0 lr=0.003 seed=0: val=1.000 test=0.999 stop@1800 best@1000 (40s)
+  B2 dm=64 ds=0 lr=0.003 seed=1: val=1.000 test=1.000 stop@1800 best@1000 (42s)
+  B2 dm=64 ds=0 lr=0.003 seed=2: val=1.000 test=1.000 stop@1800 best@1200 (41s)
+[checkpoint] pushed: chore(pilot2): checkpoint (246 runs)
+
+== SUMMARY ==
+{
+  "design": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "d_models": [
+      16,
+      32,
+      48,
+      64
+    ],
+    "d_states": [
+      8,
+      16
+    ],
+    "lr_grid": [
+      0.001,
+      0.003,
+      0.01
+    ],
+    "max_steps": 8000,
+    "patience": 5,
+    "min_delta": 0.005,
+    "metric": "test_at_best"
+  },
+  "rich_ceiling": {
+    "model": "rich",
+    "d_model": 64,
+    "d_state": 16,
+    "chosen_lr": 0.01,
+    "params": 11674,
+    "median_test": 0.793,
+    "min_test": 0.7822,
+    "max_test": 0.8228,
+    "median_val": 0.7837,
+    "median_steps": 4600
+  },
+  "b1_ceiling_median_test": 0.7383,
+  "b1_ceiling_cell": {
+    "model": "B1",
+    "d_model": 48,
+    "d_state": 16,
+    "chosen_lr": 0.003,
+    "params": 9498,
+    "median_test": 0.7383,
+    "min_test": 0.6982,
+    "max_test": 0.7485,
+    "median_val": 0.728,
+    "median_steps": 4600
+  },
+  "rich_match_to_b1_ceiling": {
+    "model": "rich",
+    "d_model": 32,
+    "d_state": 16,
+    "chosen_lr": 0.01,
+    "params": 3802,
+    "median_test": 0.7437,
+    "min_test": 0.7373,
+    "max_test": 0.7505,
+    "median_val": 0.7407,
+    "median_steps": 4800
+  },
+  "param_ratio_b1ceil_over_richmatch": 2.5,
+  "b2_anchor": [
+    {
+      "model": "B2",
+      "d_model": 32,
+      "d_state": 0,
+      "chosen_lr": 0.003,
+      "params": 6986,
+      "median_test": 0.9956,
+      "min_test": 0.9951,
+      "max_test": 0.9985,
+      "median_val": 0.998,
+      "median_steps": 3000
+    },
+    {
+      "model": "B2",
+      "d_model": 64,
+      "d_state": 0,
+      "chosen_lr": 0.003,
+      "params": 26250,
+      "median_test": 0.9995,
+      "min_test": 0.999,
+      "max_test": 1.0,
+      "median_val": 1.0,
+      "median_steps": 1000
+    }
+  ],
+  "A1A2": {
+    "config": {
+      "d_model": 64,
+      "d_state": 16,
+      "lr": 0.01
+    },
+    "normal_median_test": 0.802734375,
+    "normal": [
+      0.802734375,
+      0.7822265625,
+      0.82275390625,
+      0.79052734375,
+      0.8056640625
+    ],
+    "ablated_median_test": 0.12841796875,
+    "ablated": [
+      0.13134765625,
+      0.12841796875,
+      0.11767578125,
+      0.12841796875,
+      0.11767578125
+    ],
+    "delta_median": 0.67431640625,
+    "median_steps_to_best": 5000,
+    "alpha_min": 0.6470239758491516,
+    "alpha_max": 0.9960631728172302,
+    "alpha_mean": 0.9413196913897991,
+    "alpha_frac_near_0": 0.0,
+    "alpha_frac_near_1": 0.7125
+  }
+}
+[checkpoint] pushed: chore(pilot2): final results
+
+wall time: 5894s
