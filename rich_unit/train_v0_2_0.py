@@ -35,6 +35,8 @@ class TrainConfig:
     weight_decay: float = 0.0
     eval_every: int = 25
     seed: int = 0          # run seed (selects train stream + init)
+    patience: int | None = None   # early-stop: # evals w/o >min_delta val gain; None=off
+    min_delta: float = 0.0        # min val improvement that counts (anti slow-creep)
 
 
 @dataclass
@@ -45,6 +47,8 @@ class TrainResult:
     best_val_acc: float
     steps_to_best: int
     history: list[tuple[int, float]] = field(default_factory=list)
+    test_at_best: float | None = None   # test acc at the best-val step (honest metric)
+    stopped_step: int = 0               # step at which training actually stopped
 
 
 MakeBatch = Callable[[int, int], tuple[torch.Tensor, torch.Tensor]]
@@ -68,8 +72,17 @@ def evaluate(model: nn.Module, make_batch: MakeBatch, seeds: list[int],
 
 
 def train_one(model: nn.Module, make_batch: MakeBatch, val_seeds: list[int],
-              cfg: TrainConfig) -> TrainResult:
-    """Train one model on one task with one seed; return val metrics + curve."""
+              cfg: TrainConfig, test_seeds: list[int] | None = None) -> TrainResult:
+    """Train one model; return val metrics + curve.
+
+    Early-stop (if ``cfg.patience``): stop when val has not improved by more than
+    ``cfg.min_delta`` for ``patience`` consecutive evals; ``max_steps`` is the cap.
+    The criterion is identical for every model, so the budget is fair (SPEC §6 A3).
+
+    If ``test_seeds`` is given, test accuracy is recorded at every eval and the
+    value AT the best-val step is returned as ``test_at_best`` — lr selection and
+    early-stop run on val, the reported number on a disjoint test split.
+    """
     torch.manual_seed(cfg.seed)
     opt = torch.optim.AdamW(
         (p for p in model.parameters() if p.requires_grad),
@@ -77,8 +90,11 @@ def train_one(model: nn.Module, make_batch: MakeBatch, val_seeds: list[int],
     )
 
     history: list[tuple[int, float]] = []
-    best_val = 0.0
+    best_val = -1.0          # best-so-far val (drives reporting, test, AND patience)
     steps_to_best = 0
+    test_at_best: float | None = None
+    evals_since_improve = 0
+    stopped_step = cfg.max_steps
     # Per-run, per-step training seed stream; disjoint from val-seed namespace.
     stream_base = _TRAIN_SEED_BASE + cfg.seed * 100_000
 
@@ -98,9 +114,22 @@ def train_one(model: nn.Module, make_batch: MakeBatch, val_seeds: list[int],
         if step % cfg.eval_every == 0 or step == cfg.max_steps:
             acc = evaluate(model, make_batch, val_seeds, cfg.batch_size)
             history.append((step, acc))
+            # "improvement" = a > min_delta gain over best-so-far (computed BEFORE
+            # best_val is updated). A slow monotone creep below min_delta is NOT an
+            # improvement, so patience still fires (anti slow-creep).
+            improved = acc > best_val + cfg.min_delta
             if acc > best_val:
-                best_val = acc
+                best_val = acc                       # true running max -> reporting
                 steps_to_best = step
+                if test_seeds is not None:           # test measured AT the best-val
+                    test_at_best = evaluate(model, make_batch, test_seeds, cfg.batch_size)
+            if improved:
+                evals_since_improve = 0
+            else:
+                evals_since_improve += 1
+                if cfg.patience is not None and evals_since_improve >= cfg.patience:
+                    stopped_step = step
+                    break
 
     final_val = history[-1][1] if history else 0.0
     return TrainResult(
@@ -108,4 +137,6 @@ def train_one(model: nn.Module, make_batch: MakeBatch, val_seeds: list[int],
         best_val_acc=best_val,
         steps_to_best=steps_to_best,
         history=history,
+        test_at_best=test_at_best,
+        stopped_step=stopped_step,
     )
