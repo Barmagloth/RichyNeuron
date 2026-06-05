@@ -1,0 +1,52 @@
+{
+  "spec": "PILOT3_MINI_SPEC.md v0.3.0",
+  "config": {
+    "d_model": 64,
+    "d_state": 16
+  },
+  "lr_star": 0.01,
+  "normal_test_by_seed": {
+    "0": 0.9775,
+    "1": 0.8896,
+    "2": 0.9717,
+    "3": 0.9727,
+    "4": 0.4165
+  },
+  "normal_median_test": 0.9717,
+  "ablated_test_by_seed": {
+    "0": 0.1313,
+    "1": 0.1284,
+    "2": 0.1177,
+    "3": 0.1284,
+    "4": 0.1284
+  },
+  "ablated_median_test": 0.1284,
+  "per_seed_delta": {
+    "0": 0.8462,
+    "1": 0.7612,
+    "2": 0.854,
+    "3": 0.8443,
+    "4": 0.2881
+  },
+  "delta_per_seed_median": 0.8443,
+  "delta_richsel": 0.8433,
+  "delta_rich_ref": 0.674,
+  "threshold": 0.1,
+  "rich_level_ref": 0.8,
+  "alpha_mean_median": 0.9429,
+  "alpha_std_median": 0.1054,
+  "alpha_degenerate": false,
+  "normal_steps_to_best": [
+    3600,
+    1400,
+    2400,
+    3000,
+    600
+  ],
+  "outcome": "GREEN: axes do NOT collapse \u2014 readout still load-bearing \u2014 proceed to full 4-point ablation",
+  "all_lr_medians_val": {
+    "0.001": 0.4155,
+    "0.003": 0.4155,
+    "0.01": 0.9775
+  }
+}
