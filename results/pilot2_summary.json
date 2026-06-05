@@ -1,0 +1,342 @@
+{
+  "design": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "d_models": [
+      16,
+      32,
+      48,
+      64
+    ],
+    "d_states": [
+      8,
+      16
+    ],
+    "lr_grid": [
+      0.001,
+      0.003,
+      0.01
+    ],
+    "max_steps": 8000,
+    "patience": 5,
+    "min_delta": 0.005,
+    "metric": "test_at_best"
+  },
+  "rich_ceiling": {
+    "model": "rich",
+    "d_model": 64,
+    "d_state": 16,
+    "chosen_lr": 0.01,
+    "params": 11674,
+    "median_test": 0.793,
+    "min_test": 0.7822,
+    "max_test": 0.8228,
+    "median_val": 0.7837,
+    "median_steps": 4600
+  },
+  "b1_ceiling_median_test": 0.7383,
+  "b1_ceiling_cell": {
+    "model": "B1",
+    "d_model": 48,
+    "d_state": 16,
+    "chosen_lr": 0.003,
+    "params": 9498,
+    "median_test": 0.7383,
+    "min_test": 0.6982,
+    "max_test": 0.7485,
+    "median_val": 0.728,
+    "median_steps": 4600
+  },
+  "rich_match_to_b1_ceiling": {
+    "model": "rich",
+    "d_model": 32,
+    "d_state": 16,
+    "chosen_lr": 0.01,
+    "params": 3802,
+    "median_test": 0.7437,
+    "min_test": 0.7373,
+    "max_test": 0.7505,
+    "median_val": 0.7407,
+    "median_steps": 4800
+  },
+  "param_ratio_b1ceil_over_richmatch": 2.5,
+  "b2_anchor": [
+    {
+      "model": "B2",
+      "d_model": 32,
+      "d_state": 0,
+      "chosen_lr": 0.003,
+      "params": 6986,
+      "median_test": 0.9956,
+      "min_test": 0.9951,
+      "max_test": 0.9985,
+      "median_val": 0.998,
+      "median_steps": 3000
+    },
+    {
+      "model": "B2",
+      "d_model": 64,
+      "d_state": 0,
+      "chosen_lr": 0.003,
+      "params": 26250,
+      "median_test": 0.9995,
+      "min_test": 0.999,
+      "max_test": 1.0,
+      "median_val": 1.0,
+      "median_steps": 1000
+    }
+  ],
+  "A1A2": {
+    "config": {
+      "d_model": 64,
+      "d_state": 16,
+      "lr": 0.01
+    },
+    "normal_median_test": 0.802734375,
+    "normal": [
+      0.802734375,
+      0.7822265625,
+      0.82275390625,
+      0.79052734375,
+      0.8056640625
+    ],
+    "ablated_median_test": 0.12841796875,
+    "ablated": [
+      0.13134765625,
+      0.12841796875,
+      0.11767578125,
+      0.12841796875,
+      0.11767578125
+    ],
+    "delta_median": 0.67431640625,
+    "median_steps_to_best": 5000,
+    "alpha_min": 0.6470239758491516,
+    "alpha_max": 0.9960631728172302,
+    "alpha_mean": 0.9413196913897991,
+    "alpha_frac_near_0": 0.0,
+    "alpha_frac_near_1": 0.7125
+  },
+  "cells": [
+    {
+      "model": "B1",
+      "d_model": 16,
+      "d_state": 8,
+      "chosen_lr": 0.01,
+      "params": 1386,
+      "median_test": 0.5322,
+      "min_test": 0.4307,
+      "max_test": 0.585,
+      "median_val": 0.5283,
+      "median_steps": 4400
+    },
+    {
+      "model": "B1",
+      "d_model": 16,
+      "d_state": 16,
+      "chosen_lr": 0.01,
+      "params": 1658,
+      "median_test": 0.686,
+      "min_test": 0.6675,
+      "max_test": 0.6958,
+      "median_val": 0.6904,
+      "median_steps": 4600
+    },
+    {
+      "model": "B1",
+      "d_model": 32,
+      "d_state": 8,
+      "chosen_lr": 0.003,
+      "params": 4282,
+      "median_test": 0.5605,
+      "min_test": 0.5347,
+      "max_test": 0.6523,
+      "median_val": 0.562,
+      "median_steps": 4800
+    },
+    {
+      "model": "B1",
+      "d_model": 32,
+      "d_state": 16,
+      "chosen_lr": 0.003,
+      "params": 4810,
+      "median_test": 0.6948,
+      "min_test": 0.6724,
+      "max_test": 0.7363,
+      "median_val": 0.689,
+      "median_steps": 4200
+    },
+    {
+      "model": "B1",
+      "d_model": 48,
+      "d_state": 8,
+      "chosen_lr": 0.003,
+      "params": 8714,
+      "median_test": 0.5625,
+      "min_test": 0.5288,
+      "max_test": 0.6699,
+      "median_val": 0.5957,
+      "median_steps": 5400
+    },
+    {
+      "model": "B1",
+      "d_model": 48,
+      "d_state": 16,
+      "chosen_lr": 0.003,
+      "params": 9498,
+      "median_test": 0.7383,
+      "min_test": 0.6982,
+      "max_test": 0.7485,
+      "median_val": 0.728,
+      "median_steps": 4600
+    },
+    {
+      "model": "B1",
+      "d_model": 64,
+      "d_state": 8,
+      "chosen_lr": 0.001,
+      "params": 14682,
+      "median_test": 0.5718,
+      "min_test": 0.4746,
+      "max_test": 0.6055,
+      "median_val": 0.5713,
+      "median_steps": 7800
+    },
+    {
+      "model": "B1",
+      "d_model": 64,
+      "d_state": 16,
+      "chosen_lr": 0.003,
+      "params": 15722,
+      "median_test": 0.7383,
+      "min_test": 0.6851,
+      "max_test": 0.7505,
+      "median_val": 0.7222,
+      "median_steps": 5000
+    },
+    {
+      "model": "B2",
+      "d_model": 32,
+      "d_state": 0,
+      "chosen_lr": 0.003,
+      "params": 6986,
+      "median_test": 0.9956,
+      "min_test": 0.9951,
+      "max_test": 0.9985,
+      "median_val": 0.998,
+      "median_steps": 3000
+    },
+    {
+      "model": "B2",
+      "d_model": 64,
+      "d_state": 0,
+      "chosen_lr": 0.003,
+      "params": 26250,
+      "median_test": 0.9995,
+      "min_test": 0.999,
+      "max_test": 1.0,
+      "median_val": 1.0,
+      "median_steps": 1000
+    },
+    {
+      "model": "rich",
+      "d_model": 16,
+      "d_state": 8,
+      "chosen_lr": 0.01,
+      "params": 1138,
+      "median_test": 0.5586,
+      "min_test": 0.4565,
+      "max_test": 0.606,
+      "median_val": 0.5454,
+      "median_steps": 3600
+    },
+    {
+      "model": "rich",
+      "d_model": 16,
+      "d_state": 16,
+      "chosen_lr": 0.01,
+      "params": 1402,
+      "median_test": 0.6421,
+      "min_test": 0.4702,
+      "max_test": 0.6533,
+      "median_val": 0.6406,
+      "median_steps": 4200
+    },
+    {
+      "model": "rich",
+      "d_model": 32,
+      "d_state": 8,
+      "chosen_lr": 0.01,
+      "params": 3282,
+      "median_test": 0.6392,
+      "min_test": 0.6147,
+      "max_test": 0.7036,
+      "median_val": 0.6416,
+      "median_steps": 6400
+    },
+    {
+      "model": "rich",
+      "d_model": 32,
+      "d_state": 16,
+      "chosen_lr": 0.01,
+      "params": 3802,
+      "median_test": 0.7437,
+      "min_test": 0.7373,
+      "max_test": 0.7505,
+      "median_val": 0.7407,
+      "median_steps": 4800
+    },
+    {
+      "model": "rich",
+      "d_model": 48,
+      "d_state": 8,
+      "chosen_lr": 0.01,
+      "params": 6450,
+      "median_test": 0.6343,
+      "min_test": 0.6074,
+      "max_test": 0.7065,
+      "median_val": 0.6416,
+      "median_steps": 4200
+    },
+    {
+      "model": "rich",
+      "d_model": 48,
+      "d_state": 16,
+      "chosen_lr": 0.01,
+      "params": 7226,
+      "median_test": 0.7847,
+      "min_test": 0.7441,
+      "max_test": 0.7905,
+      "median_val": 0.7583,
+      "median_steps": 4000
+    },
+    {
+      "model": "rich",
+      "d_model": 64,
+      "d_state": 8,
+      "chosen_lr": 0.01,
+      "params": 10642,
+      "median_test": 0.6665,
+      "min_test": 0.6318,
+      "max_test": 0.7222,
+      "median_val": 0.6807,
+      "median_steps": 5200
+    },
+    {
+      "model": "rich",
+      "d_model": 64,
+      "d_state": 16,
+      "chosen_lr": 0.01,
+      "params": 11674,
+      "median_test": 0.793,
+      "min_test": 0.7822,
+      "max_test": 0.8228,
+      "median_val": 0.7837,
+      "median_steps": 4600
+    }
+  ]
+}
