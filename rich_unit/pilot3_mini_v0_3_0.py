@@ -82,6 +82,10 @@ def alpha_stats(model: SequenceModel) -> dict:
 
 
 def run_cell(lr, seed, ablate):
+    # Seed BEFORE constructing the model so the init is seed-deterministic. Then
+    # normal(seed=s) and ablated(seed=s) get IDENTICAL weights except W_h (which
+    # ablated zeros), i.e. a clean paired ablation differing only by the readout.
+    torch.manual_seed(seed)
     core = RichSelLayer(D_MODEL, D_STATE, ablate_state=ablate)
     model = SequenceModel(core, VOCAB_SIZE, D_MODEL)
     cfg = TrainConfig(max_steps=MAX_STEPS, lr=lr, batch_size=BATCH,
@@ -148,13 +152,23 @@ def analyse():
     lr_star = max(bylr, key=lambda lr: med(r["best_val"] for r in bylr[lr]))
 
     norm_star = sorted(bylr[lr_star], key=lambda r: r["seed"])
-    abl_star = sorted([r for r in rows if r["ablate"] == 1 and r["lr"] == lr_star],
-                      key=lambda r: r["seed"])
-    norm_tests = [r["test_at_best"] for r in norm_star]
-    abl_tests = [r["test_at_best"] for r in abl_star]
-    normal_med = med(norm_tests)
-    ablated_med = med(abl_tests) if abl_tests else None
-    delta = (normal_med - ablated_med) if ablated_med is not None else None
+    # Pair by SEED VALUE (not list position): normal(seed=s) <-> ablated(seed=s),
+    # the same paired point (same lr*, same seed, differ only by W_h=0).
+    norm_by_seed = {r["seed"]: r["test_at_best"] for r in norm_star}
+    abl_by_seed = {r["seed"]: r["test_at_best"]
+                   for r in rows if r["ablate"] == 1 and r["lr"] == lr_star}
+    paired_seeds = sorted(set(norm_by_seed) & set(abl_by_seed))
+    per_seed_delta = {s: round(norm_by_seed[s] - abl_by_seed[s], 4) for s in paired_seeds}
+
+    norm_tests = [norm_by_seed[s] for s in sorted(norm_by_seed)]
+    abl_tests = [abl_by_seed[s] for s in sorted(abl_by_seed)]
+    # Headline Delta = median(normal) - median(ablated) over the PAIRED seeds, to
+    # match how Delta_rich=0.674 was defined in pilot 2. Also report the median of
+    # the per-seed paired deltas as the stricter statistic.
+    normal_med = med(norm_by_seed[s] for s in paired_seeds) if paired_seeds else None
+    ablated_med = med(abl_by_seed[s] for s in paired_seeds) if paired_seeds else None
+    delta = (normal_med - ablated_med) if paired_seeds else None
+    delta_per_seed_median = med(per_seed_delta.values()) if per_seed_delta else None
 
     alpha_std_med = med(r["alpha_std"] for r in norm_star)
     alpha_mean_med = med(r["alpha_mean"] for r in norm_star)
@@ -175,8 +189,9 @@ def analyse():
     summary = {
         "spec": "PILOT3_MINI_SPEC.md v0.3.0", "config": {"d_model": D_MODEL, "d_state": D_STATE},
         "lr_star": lr_star,
-        "normal_test_per_seed": norm_tests, "normal_median_test": normal_med,
-        "ablated_test_per_seed": abl_tests, "ablated_median_test": ablated_med,
+        "normal_test_by_seed": norm_by_seed, "normal_median_test": normal_med,
+        "ablated_test_by_seed": abl_by_seed, "ablated_median_test": ablated_med,
+        "per_seed_delta": per_seed_delta, "delta_per_seed_median": delta_per_seed_median,
         "delta_richsel": delta, "delta_rich_ref": DELTA_RICH_REF,
         "threshold": DELTA_THRESH, "rich_level_ref": RICH_LEVEL,
         "alpha_mean_median": alpha_mean_med, "alpha_std_median": alpha_std_med,
