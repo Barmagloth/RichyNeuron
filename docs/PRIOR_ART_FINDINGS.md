@@ -114,3 +114,45 @@ re-scoped against this prior art. Decision escalated to the user.
 - Gated DeltaNet: https://arxiv.org/abs/2412.06464
 - HGRN2: https://arxiv.org/abs/2404.07904
 - GLA: https://arxiv.org/abs/2312.06635
+
+## PHASE / COMPLEX channel branch (second prior-art sweep, per user)
+Checked branches A-E (complex/phase recurrent, oscillatory SSM, amplitude-envelope,
+phase-multiplexing, neuroscience phase coding) via search → fetch → snowball. The
+verdict depends on which of TWO interpretations the phase channel means — and BOTH are
+heavily covered:
+
+**Interpretation 1 — complex/oscillation as a DYNAMICS/memory tool (like S4):**
+- Unitary/orthogonal RNNs (Arjovsky 2016, arXiv 1611.00035): complex hidden state, norm-
+  preserving, long memory, can implement DFT/spectral representations.
+- **LinOSS — Oscillatory State-Space Models** (Rusch et al., arXiv 2410.03943, 2024/25):
+  linear SSM as forced harmonic oscillators ("inspired by cortical dynamics"), parallel
+  scan, SOTA long-range. Oscillation = stable long-memory device (not phase-as-channel).
+- S4 (complex eigenvalues) and Mamba-3 (complex-valued state) — complexity as a memory
+  trick. → **Interpretation 1 is hard-closed.**
+
+**Interpretation 2 — phase carries SEPARATE information (rate+phase multiplexing / channel):**
+- **Deep Complex Networks** (Trabelsi et al., 2017, arXiv 1705.09792): explicitly
+  "amplitude = firing rate, phase = relative timing; similar phases add constructively
+  (synchrony)". The rate+phase dual-coding idea, published 2017.
+- **Theta-gamma phase code** (computational neuroscience): gamma = item content, theta-
+  phase = sequence order; working-memory models exploit it for multi-item ordered
+  sequences (the neuroscience origin of phase-multiplexing).
+- **Phase-Associative Memory** (Vishwakarma & Agostino, arXiv 2604.05030, 2026): complex-
+  valued sequence LM whose phase carries semantic info (distinct phase for synonyms vs
+  unrelated) — but only "competitive with a real-valued ablation" (benefit modest/unclear).
+- Audio: complex-spectrogram amplitude/phase separation (e.g. APSS, arXiv 2509.13825) —
+  amplitude & phase as parallel estimated streams. → **Interpretation 2 is also covered**
+  (ML 2017+2026, neuroscience, audio), with the ML param/quality benefit reported modest.
+
+**Verdict (phase branch):** like axis 2, the phase/complex channel is prior art on BOTH
+readings. As a dynamics tool: hard-closed (unitary RNN / LinOSS / S4 / Mamba-3). As a
+semantic/timing channel: covered (Deep Complex Networks 2017; theta-gamma; PAM 2026), and
+the reported benefit over real-valued is modest — so even the "does phase-channel buy
+anything at equal params" ablation is partly foreknown (≈ "competitive, not clearly better").
+
+## Sources (phase branch)
+- LinOSS / Oscillatory SSM: https://arxiv.org/abs/2410.03943
+- Unitary Evolution RNN (Arjovsky): https://arxiv.org/abs/1511.06464
+- Deep Complex Networks: https://arxiv.org/abs/1705.09792
+- Phase-Associative Memory: https://arxiv.org/abs/2604.05030
+- Theta-gamma phase code (review): https://pubmed.ncbi.nlm.nih.gov/23522038/
