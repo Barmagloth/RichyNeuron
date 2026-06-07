@@ -81,3 +81,36 @@ Shallow "not found" was insufficient. Checked the most likely candidates directl
 
 Decision (whether the thin remaining methodological gap justifies the FULL run, reframe,
 or pivot) is escalated to the user — not decided here.
+
+## DECISIVE prior art found (deeper search, per user "search better")
+**GateLORD — Zucchet & Orvieto, "Recurrent neural networks: vanishing and exploding
+gradients are not the end of the story", arXiv 2405.21064 (NeurIPS 2024).**
+- Computes the output as **`p(x_t, h_t) ⊙ o(x_t, h_t)`** — a MULTIPLICATIVE output where
+  both branches are functions of input x_t AND the latent state h_t. This is exactly
+  the axis-2 family: a STATE-DEPENDENT multiplicative output gate, on a DIAGONAL linear
+  RNN (our regime).
+- **They run our ablation:** `p⊙o` (with the multiplicative gate) vs `p` alone (without)
+  — and find the multiplicative state-dependent output gate **substantially improves
+  prediction**. I.e. the mechanism, the controlled ablation, AND a positive result are
+  already published, on a diagonal linear recurrent model.
+- Corroborating: HGRN-2 and Gated DeltaNet "expose their hidden state to a learned
+  token-wise gate" and are noted as best-in-recall once hybridised — the importance of
+  state-dependent gating is established.
+
+## FINAL verdict: axis 2 is prior art (mechanism + ablation + result). FULL not warranted.
+Our axis 2 (state-dependent multiplicative output gate over a diagonal state) and its
+isolated contribution are NOT novel: present as LSTM (1997), xLSTM sLSTM (2024), and —
+decisively — GateLORD (2024) already performs the equal-design ablation on a diagonal
+linear RNN and reports that the state-dependent multiplicative gate helps. Running FULL
+(A-fix-off) would re-derive a published result. Per PRIOR_ART_CHECK §5, this is a valid,
+cheap, important outcome (saved ~20h CPU, established the novelty boundary). Recommend:
+do NOT run FULL as framed; the project's remaining open direction (if any) must be
+re-scoped against this prior art. Decision escalated to the user.
+
+## Sources (deeper)
+- GateLORD / RNN gradients: https://arxiv.org/abs/2405.21064
+- xLSTM: https://arxiv.org/abs/2405.04517
+- Griffin/Hawk: https://arxiv.org/abs/2402.19427
+- Gated DeltaNet: https://arxiv.org/abs/2412.06464
+- HGRN2: https://arxiv.org/abs/2404.07904
+- GLA: https://arxiv.org/abs/2312.06635
