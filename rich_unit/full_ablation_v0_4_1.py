@@ -171,7 +171,7 @@ def main():
     _do(anchor_jobs, log)
 
     print(f"\nFULL sweep done. wall {time.time()-t0:.0f}s. "
-          f"Run report_full_v0_4_1.py for the verdict.", flush=True)
+          f"Run report_full_v0_5_0.py for the verdict (margin / Pareto-dominance).", flush=True)
     if PUSH_CHECKPOINTS:
         git_checkpoint([CSV_PATH, JSONL_PATH], "chore(full): sweep complete", push=True)
 

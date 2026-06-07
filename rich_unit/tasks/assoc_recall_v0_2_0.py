@@ -9,9 +9,9 @@ Vocabulary layout:
     17          = query marker
 Total vocab = n_tokens + 2 = 18.
 
-Sequence (T = 2*n_pairs + 3 = 19):
-    [k0 v0 k1 v1 ... k7 v7]  marker  query_key  answer
-     0 ............... 15      16        17        18
+Sequence (T = 2*n_pairs + 3 = 7 for n_pairs=2):
+    [k0 v0 k1 v1]  marker  query_key  answer
+     0 ...... 3      4         5         6
 Keys are distinct (well-defined mapping); values sampled with replacement. The
 answer slot input is blank; its target is the queried key's value. All other
 positions are IGNORE_INDEX. Token-level accuracy is over the single answer slot.
@@ -25,7 +25,9 @@ from __future__ import annotations
 import torch
 
 N_TOKENS = 16
-N_PAIRS = 8
+N_PAIRS = 2                            # FULL v0.5.0 finalized (GRU solves 0.996; n>=4
+                                       # unsolvable even by GRU at this scale). The
+                                       # v0.2.0 proposal said 8 — never validated, dropped.
 
 BLANK = 0
 QUERY_MARKER = N_TOKENS + 1            # = 17
